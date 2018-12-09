@@ -1,0 +1,11 @@
+name: WorldBlock
+version: "B1"
+api: [3.3.1, 4.0.0]
+author: saena
+main: WorldBlock\WorldBlock
+commands:
+  월드보호:
+    usage: /월드보호
+    description: 월드보호 명령어
+    permission: WorldBolck
+
