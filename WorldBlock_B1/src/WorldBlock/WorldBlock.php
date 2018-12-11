@@ -21,11 +21,7 @@ use pocketmine\utils\Utils;
 class WorldBlock extends PluginBase implements Listener {
 	public function onEnable() {
 		@mkdir ( $this->getDataFolder () );
-		$this->j = new Config ( $this->getDataFolder () . "j.yml", Config::YAML, [ 
-				"월드보호" => [ 
-						"world" 
-				] 
-		] );
+		$this->j = new Config ( $this->getDataFolder () . "j.yml", Config::YAML );
 		$this->jdb = $this->j->getAll ();
 		$this->getServer ()->getPluginManager ()->registerEvents ( $this, $this );
 	}
@@ -67,7 +63,7 @@ class WorldBlock extends PluginBase implements Listener {
 		$tag = "§b§l[ §f월드§b ]§f";
 		$player = $event->getPlayer ();
 		if (! $player->isOp ()) {
-			if (in_array($event->getBlock ()->getLevel ()->getFolderName () ,$this->jdb ["월드보호"])) {
+			if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
 				$player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
 				$event->setCancelled ();
 			}
@@ -77,7 +73,7 @@ class WorldBlock extends PluginBase implements Listener {
 		$tag = "§b§l[ §f월드§b ]§f";
 		$player = $event->getPlayer ();
 		if (! $player->isOp ()) {
-			if (in_array($event->getBlock ()->getLevel ()->getFolderName () ,$this->jdb ["월드보호"])) {
+			if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
 				$player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
 				$event->setCancelled ();
 			}
