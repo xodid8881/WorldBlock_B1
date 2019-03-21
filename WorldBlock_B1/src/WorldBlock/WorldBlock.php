@@ -63,9 +63,11 @@ class WorldBlock extends PluginBase implements Listener {
 		$tag = "§b§l[ §f월드§b ]§f";
 		$player = $event->getPlayer ();
 		if (! $player->isOp ()) {
-			if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
-				$player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
-				$event->setCancelled ();
+		        if (isset ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()])) {
+			        if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
+				        $player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
+				        $event->setCancelled ();
+				}
 			}
 		}
 	}
@@ -73,9 +75,11 @@ class WorldBlock extends PluginBase implements Listener {
 		$tag = "§b§l[ §f월드§b ]§f";
 		$player = $event->getPlayer ();
 		if (! $player->isOp ()) {
-			if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
-				$player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
-				$event->setCancelled ();
+			if (isset ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()])) {
+			        if ($this->jdb ["월드보호"] [$event->getBlock ()->getLevel ()->getFolderName ()] == "보호") {
+				        $player->sendPopup ( $tag . " 해당 월드는 보호가 진행중 입니다." );
+				        $event->setCancelled ();
+				}
 			}
 		}
 	}
